@@ -75,6 +75,11 @@ input[type="search"] {
     font-size: 1rem;
 }
 
+input:focus {
+    outline: 0.2rem solid var(--cor-andamento);
+    outline-offset: 0.15rem;
+}
+
 fieldset {
     margin: 0;
     padding: var(--espaco-medio);
@@ -170,3 +175,42 @@ article h4 {
     white-space: nowrap;
 }
 
+
+article p {
+    margin: 0;
+}
+
+.prazo {
+    margin-top: auto;
+}
+
+.prioridade {
+    font-weight: bold;
+}
+
+footer {
+    margin-top: var(--espaco-grande);
+    padding: var(--espaco-grande);
+
+    background-color: var(--cor-superficie);
+    border-top: 1px solid var(--cor-borda);
+
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* 
+   A partir de 60rem as quatro colunas conseguem ficar lado a lado
+   sem deixar os cartões estreitos demais.
+*/
+
+@media (min-width: 60rem) {
+
+    .quadro-tarefas {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+}
