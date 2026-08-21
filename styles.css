@@ -117,3 +117,56 @@ fieldset input[type="radio"] {
     border-radius: var(--raio);
 }
 
+.status-a-fazer {
+    border-top: 0.35rem solid var(--cor-a-fazer);
+}
+
+.status-andamento {
+    border-top: 0.35rem solid var(--cor-andamento);
+}
+
+.status-revisao {
+    border-top: 0.35rem solid var(--cor-revisao);
+}
+
+.status-concluido {
+    border-top: 0.35rem solid var(--cor-concluido);
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-medio);
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-pequeno);
+
+    min-width: 0;
+    height: 100%;
+
+    padding: var(--espaco-medio);
+
+    background-color: var(--cor-superficie);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+}
+
+article h4 {
+    min-width: 0;
+
+    margin: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
