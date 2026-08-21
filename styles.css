@@ -31,3 +31,47 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.5;
 }
+
+header {
+    background-color: var(--cor-superficie);
+    border-bottom: 1px solid var(--cor-borda);
+    padding: var(--espaco-grande);
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+main {
+    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: var(--espaco-medio);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-medio);
+    margin-bottom: var(--espaco-grande);
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="search"] {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: var(--espaco-pequeno);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+
+    background-color: var(--cor-superficie);
+    color: var(--cor-texto);
+
+    font-size: 1rem;
+}
+
