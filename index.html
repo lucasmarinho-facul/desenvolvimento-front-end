@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de Tarefas Acadêmicas</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -58,10 +59,10 @@
 
     </section>
 
-    <section>
+    <section class="quadro-tarefas">
         <h2>Quadro de tarefas</h2>
 
-        <section aria-labelledby="titulo-afazer">
+        <section class="status-a-fazer" aria-labelledby="titulo-afazer">
             <h3 id="titulo-afazer">A fazer</h3>
 
             <ul>
@@ -72,8 +73,8 @@
                         <h4>Modelar banco de dados</h4>
                         <p><strong>Projeto:</strong> Sistema de biblioteca</p>
                         <p><strong>Responsavel:</strong> Lucas</p>
-                        <p><strong>Prazo:</strong> 15/06/2026</p>
-                        <p><strong>Prioridade:</strong> alta</p>
+                        <p class="prazo"><strong>Prazo:</strong> 15/06/2026</p>
+                        <p class="prioridade"><strong>Prioridade:</strong> alta</p>
 
                     </article>
                 </li>
@@ -83,8 +84,8 @@
                         <h4>Criar wireframe</h4>
                         <p><strong>Projeto:</strong> Aplicativo Escolar</p>
                         <p><strong>Responsável:</strong> Pedro</p>
-                        <p><strong>Prazo:</strong> 18/08/2026</p>
-                        <p><strong>Prioridade:</strong> Média</p>
+                        <p class="prazo"><strong>Prazo:</strong> 18/08/2026</p>
+                        <p class="prioridade"><strong>Prioridade:</strong> Média</p>
                     </article>
                 </li>
 
@@ -93,7 +94,7 @@
 
         </section>
 
-        <section aria-labelledby="titulo-andamento">
+        <section class="status-andamento"aria-labelledby="titulo-andamento">
             <h3 id="titulo-andamento">Em andamento</h3>
 
             <ul>
@@ -103,8 +104,8 @@
                         <h4>Desenvolver página inicial</h4>
                         <p><strong>Projeto:</strong> Site Acadêmico</p>
                         <p><strong>Responsável:</strong> Bárbara</p>
-                        <p><strong>Prazo:</strong> 20/08/2026</p>
-                        <p><strong>Prioridade:</strong> Alta</p>
+                        <p class="prazo"><strong>Prazo:</strong> 20/08/2026</p>
+                        <p class="prioridade"><strong>Prioridade:</strong> Alta</p>
                     </article>
                 </li>
 
@@ -113,8 +114,8 @@
                         <h4>Implementar login</h4>
                         <p><strong>Projeto:</strong> Sistema Biblioteca</p>
                         <p><strong>Responsável:</strong> Lucas</p>
-                        <p><strong>Prazo:</strong> 21/08/2026</p>
-                        <p><strong>Prioridade:</strong> Média</p>
+                        <p class="prazo"><strong>Prazo:</strong> 21/08/2026</p>
+                        <p class="prioridade"><strong>Prioridade:</strong> Média</p>
                     </article>
                 </li>
 
@@ -123,7 +124,7 @@
 
         </section>
 
-        <section aria-labelledby="titulo-revisao">
+        <section class="titulo-revisao" aria-labelledby="titulo-revisao">
             <h3 id="titulo-revisao">Em revisao</h3>
 
             <ul>
@@ -133,8 +134,8 @@
                         <h4>Revisar documentação</h4>
                         <p><strong>Projeto:</strong> Projeto Integrador</p>
                         <p><strong>Responsável:</strong> Ana</p>
-                        <p><strong>Prazo:</strong> 22/08/2026</p>
-                        <p><strong>Prioridade:</strong> Baixa</p>
+                        <p class="prazo"><strong>Prazo:</strong> 22/08/2026</p>
+                        <p class="prioridade"><strong>Prioridade:</strong> Baixa</p>
                     </article>
                 </li>
 
@@ -143,8 +144,8 @@
                         <h4>Testar formulário</h4>
                         <p><strong>Projeto:</strong> Sistema Escolar</p>
                         <p><strong>Responsável:</strong> Pedro</p>
-                        <p><strong>Prazo:</strong> 23/08/2026</p>
-                        <p><strong>Prioridade:</strong> Média</p>
+                        <p class="prazo"><strong>Prazo:</strong> 23/08/2026</p>
+                        <p class="prioridade"><strong>Prioridade:</strong> Média</p>
                     </article>
                 </li>
 
@@ -153,7 +154,8 @@
 
         </section>
 
-        <section aria-labelledby="titulo-concluido">
+        <section 
+        class="titulo-concluido" aria-labelledby="titulo-concluido">
             <h3 id="titulo-concluido">concluido</h3>
 
             <ul>
@@ -163,8 +165,8 @@
                         <h4>Levantamento de requisitos</h4>
                         <p><strong>Projeto:</strong> Sistema Biblioteca</p>
                         <p><strong>Responsável:</strong> Lucas</p>
-                        <p><strong>Prazo:</strong> 10/08/2026</p>
-                        <p><strong>Prioridade:</strong> Alta</p>
+                        <p class="prazo"><strong>Prazo:</strong> 10/08/2026</p>
+                        <p class="prioridade"><strong>Prioridade:</strong> Alta</p>
                     </article>
                 </li>
 
@@ -173,8 +175,8 @@
                         <h4>Entrega do relatório</h4>
                         <p><strong>Projeto:</strong> Engenharia de Software</p>
                         <p><strong>Responsável:</strong> Bárbara</p>
-                        <p><strong>Prazo:</strong> 09/08/2026</p>
-                        <p><strong>Prioridade:</strong> Baixa</p>
+                        <p class="prazo"><strong>Prazo:</strong> 09/08/2026</p>
+                        <p class="prioridade"><strong>Prioridade:</strong> Baixa</p>
                     </article>
                 </li>
 
