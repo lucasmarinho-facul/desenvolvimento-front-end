@@ -1,0 +1,33 @@
+:root {
+    --cor-fundo: #f5f5f5;
+    --cor-superficie: #ffffff;
+    --cor-texto: #222222;
+    --cor-borda: #cccccc;
+
+    --cor-a-fazer: #e3b341;
+    --cor-andamento: #3b82f6;
+    --cor-revisao: #8b5cf6;
+    --cor-concluido: #22c55e;
+
+    --espaco-pequeno: 0.5rem;
+    --espaco-medio: 1rem;
+    --espaco-grande: 1.5rem;
+
+    --raio: 0.5rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
