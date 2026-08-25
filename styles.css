@@ -122,19 +122,19 @@ fieldset input[type="radio"] {
     border-radius: var(--raio);
 }
 
-.status-a-fazer {
+.status-a-fazer article {
     border-top: 0.35rem solid var(--cor-a-fazer);
 }
 
-.status-andamento {
+.status-andamento article{
     border-top: 0.35rem solid var(--cor-andamento);
 }
 
-.status-revisao {
+.status-revisao article{
     border-top: 0.35rem solid var(--cor-revisao);
 }
 
-.status-concluido {
+.status-concluido article{
     border-top: 0.35rem solid var(--cor-concluido);
 }
 
@@ -214,3 +214,4 @@ footer p {
     }
 
 }
+
