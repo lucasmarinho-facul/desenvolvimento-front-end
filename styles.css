@@ -177,6 +177,7 @@ article {
 }
 
 article h4 {
+    flex: 1;
     min-width: 0;
 
     margin: 0;
@@ -211,6 +212,27 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+button {
+    width: fit-content;
+    min-height: 2.75rem;
+    padding: var(--espaco-pequeno) var(--espaco-medio);
+
+    background-color: var(--cor-andamento);
+    color: var(--cor-superficie);
+
+    border: 0;
+    border-radius: var(--raio);
+
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:focus-visible {
+    outline: 0.2rem solid var(--cor-andamento);
+    outline-offset: 0.15rem;
 }
 
 /* 
