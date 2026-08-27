@@ -3,6 +3,7 @@
     --cor-superficie: #ffffff;
     --cor-texto: #222222;
     --cor-borda: #cccccc;
+    --cor-botao: #013588;
 
     --cor-a-fazer: #e3b341;
     --cor-andamento: #3b82f6;
@@ -219,7 +220,7 @@ button {
     min-height: 2.75rem;
     padding: var(--espaco-pequeno) var(--espaco-medio);
 
-    background-color: var(--cor-andamento);
+    background-color: var(--cor-botao);
     color: var(--cor-superficie);
 
     border: 0;
