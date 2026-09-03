@@ -101,19 +101,31 @@ fieldset {
     border-radius: var(--raio);
 
     background-color: var(--cor-superficie);
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-medio);
+}
+
+
+.opcao-radio {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espaco-pequeno);
+    white-space: nowrap; 
 }
 
 fieldset label {
-    display: inline-block;
-    margin-right: var(--espaco-medio);
-    margin-bottom: var(--espaco-pequeno);
-
+    margin: 0;
     font-weight: normal;
+    cursor: pointer;
 }
 
 fieldset input[type="radio"] {
-    min-width: 1.5rem;
-    min-height: 1.5rem;
+    min-width: 1.25rem;
+    min-height: 1.25rem;
+    margin: 0;
+    cursor: pointer;
 }
 
 .quadro-tarefas {
@@ -241,6 +253,7 @@ button:focus-visible {
    sem deixar os cartões estreitos demais.
 */
 
+
 @media (min-width: 60rem) {
 
     .quadro-tarefas {
@@ -248,5 +261,7 @@ button:focus-visible {
     }
 
 }
+
+
 
 
