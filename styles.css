@@ -262,6 +262,11 @@ button:focus-visible {
 
 }
 
+#status {
+    min-height: 1.5rem;
+    margin-bottom: var(--espaco-medio);
+    font-weight: bold;
+}
 
 
 
