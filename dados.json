@@ -1,0 +1,76 @@
+{
+    "tarefas": [
+        {
+            "id": 1,
+            "titulo": "Modelar banco de dados",
+            "projeto": "Sistema de biblioteca",
+            "responsavel": "Lucas",
+            "status": "a-fazer",
+            "prioridade": "alta",
+            "prazo": "15/06/2026"
+        },
+        {
+            "id": 2,
+            "titulo": "Criar wireframe",
+            "projeto": "Aplicativo Escolar",
+            "responsavel": "Pedro",
+            "status": "a-fazer",
+            "prioridade": "media",
+            "prazo": "18/08/2026"
+        },
+        {
+            "id": 3,
+            "titulo": "Desenvolver página inicial",
+            "projeto": "Site Acadêmico",
+            "responsavel": "Bárbara",
+            "status": "em-andamento",
+            "prioridade": "alta",
+            "prazo": "20/08/2026"
+        },
+        {
+            "id": 4,
+            "titulo": "Implementar login",
+            "projeto": "Sistema Biblioteca",
+            "responsavel": "Lucas",
+            "status": "em-andamento",
+            "prioridade": "media",
+            "prazo": "21/08/2026"
+        },
+        {
+            "id": 5,
+            "titulo": "Revisar documentação",
+            "projeto": "Projeto Integrador",
+            "responsavel": "Ana",
+            "status": "em-revisao",
+            "prioridade": "baixa",
+            "prazo": "22/08/2026"
+        },
+        {
+            "id": 6,
+            "titulo": "Testar formulário",
+            "projeto": "Sistema Escolar",
+            "responsavel": "Pedro",
+            "status": "em-revisao",
+            "prioridade": "media",
+            "prazo": "23/08/2026"
+        },
+        {
+            "id": 7,
+            "titulo": "Levantamento de requisitos",
+            "projeto": "Sistema Biblioteca",
+            "responsavel": "Lucas",
+            "status": "concluida",
+            "prioridade": "alta",
+            "prazo": "10/08/2026"
+        },
+        {
+            "id": 8,
+            "titulo": "Entrega do relatório",
+            "projeto": "Engenharia de Software",
+            "responsavel": "Bárbara",
+            "status": "concluida",
+            "prioridade": "baixa",
+            "prazo": "09/08/2026"
+        }
+    ]
+}
