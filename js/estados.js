@@ -1,14 +1,89 @@
 import { renderizarTarefas } from "./renderizacao.js";
 
 
-export function renderizarEstado(estado, dados) {
+export const estado = {
+    tarefas: [],
+    busca: "",
+    status: "todos",
+    prioridade: "todas",
+    ordenacao: "padrao",
+    carregamento: "carregando",
+    erro: null
+};
+
+
+export function derivarTarefasVisiveis(estado) {
+
+    let tarefasVisiveis = [...estado.tarefas];
+
+
+
+    if (estado.busca.trim() !== "") {
+
+        const buscaNormalizada = estado.busca
+            .trim()
+            .toLowerCase();
+
+        tarefasVisiveis = tarefasVisiveis.filter((tarefa) =>
+            tarefa.titulo.toLowerCase().includes(buscaNormalizada)
+        );
+    }
+
+
+
+    if (estado.status !== "todos") {
+
+        tarefasVisiveis = tarefasVisiveis.filter(
+            (tarefa) => tarefa.status === estado.status
+        );
+    }
+
+
+
+    if (estado.prioridade !== "todas") {
+
+        tarefasVisiveis = tarefasVisiveis.filter(
+            (tarefa) => tarefa.prioridade === estado.prioridade
+        );
+    }
+
+
+
+    if (estado.ordenacao === "prazo") {
+
+        tarefasVisiveis.sort((a, b) => {
+
+            const dataA = converterPrazoParaData(a.prazo);
+            const dataB = converterPrazoParaData(b.prazo);
+
+            return dataA - dataB;
+        });
+    }
+
+
+    return tarefasVisiveis;
+}
+
+
+function converterPrazoParaData(prazo) {
+
+    const [dia, mes, ano] = prazo.split("/");
+
+    return new Date(
+        Number(ano),
+        Number(mes) - 1,
+        Number(dia)
+    );
+}
+
+
+export function renderizarEstado() {
 
     const status = document.querySelector("#status");
-
     const quadro = document.querySelector(".quadro-tarefas");
 
 
-    if (estado === "carregando") {
+    if (estado.carregamento === "carregando") {
 
         quadro.hidden = true;
 
@@ -18,36 +93,11 @@ export function renderizarEstado(estado, dados) {
     }
 
 
-    if (estado === "sucesso") {
-
-        quadro.hidden = false;
-
-        renderizarTarefas(dados, quadro);
-
-        status.textContent = `${dados.length} tarefas carregadas.`;
-
-        return;
-    }
-
-
-    if (estado === "vazio") {
-
-        quadro.hidden = false;
-
-        renderizarTarefas([], quadro);
-
-        status.textContent = "Não há tarefas cadastradas.";
-
-        return;
-    }
-
-
-    if (estado === "erro") {
+    if (estado.carregamento === "erro") {
 
         quadro.hidden = true;
 
-
-        if (dados.name === "TypeError") {
+        if (estado.erro.name === "TypeError") {
 
             status.textContent =
                 "Não foi possível carregar as tarefas. Verifique sua conexão.";
@@ -56,7 +106,7 @@ export function renderizarEstado(estado, dados) {
         }
 
 
-        if (dados.name === "SyntaxError") {
+        if (estado.erro.name === "SyntaxError") {
 
             status.textContent =
                 "Os dados recebidos estão em formato inválido.";
@@ -66,8 +116,47 @@ export function renderizarEstado(estado, dados) {
 
 
         status.textContent =
-            `Não foi possível carregar as tarefas. ${dados.message}`;
+            `Não foi possível carregar as tarefas. ${estado.erro.message}`;
 
+        return;
     }
 
+
+
+    quadro.hidden = false;
+
+
+    const tarefasVisiveis = derivarTarefasVisiveis(estado);
+
+
+
+    if (estado.tarefas.length === 0) {
+
+        renderizarTarefas([], quadro);
+
+        status.textContent =
+            "Não há tarefas cadastradas.";
+
+        return;
+    }
+
+
+
+    if (tarefasVisiveis.length === 0) {
+
+        renderizarTarefas([], quadro);
+
+        status.textContent =
+            "Nenhuma tarefa encontrada para os critérios selecionados.";
+
+        return;
+    }
+
+
+
+    renderizarTarefas(tarefasVisiveis, quadro);
+
+
+    status.textContent =
+        `${tarefasVisiveis.length} de ${estado.tarefas.length} tarefas.`;
 }
