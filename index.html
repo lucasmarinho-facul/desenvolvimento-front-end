@@ -19,56 +19,202 @@
         <h2 id="titulo-filtros">Busca e filtros</h2>
 
     <form>
-        <label for="busca">buscar tarefa:</label>
-        <input type="search" id="busca" name="busca">
-    
+
+    <label for="busca">Buscar tarefa:</label>
+
+    <input
+        type="search"
+        id="busca"
+        name="busca"
+        placeholder="Digite o título da tarefa"
+    >
+
 
     <fieldset>
 
         <legend>Status</legend>
 
-        <div class="opcao-radio">
-            <input type="radio" id="fazer" name="status">
-            <label for="fazer">A fazer</label>
-        </div>
 
         <div class="opcao-radio">
-            <input type="radio" id="andamento" name="status">
-            <label for="andamento">Em andamento</label>
+
+            <input
+                type="radio"
+                id="status-todos"
+                name="status"
+                value="todos"
+                checked
+            >
+
+            <label for="status-todos">
+                Todos
+            </label>
+
         </div>
 
-        <div class="opcao-radio">
-           <input type="radio" id="revisao" name="status">
-            <label for="revisao">Em revisão</label>
-        </div>
 
         <div class="opcao-radio">
-            <input type="radio" id="concluido" name="status">
-            <label for="concluido">Concluído</label>
+
+            <input
+                type="radio"
+                id="fazer"
+                name="status"
+                value="a-fazer"
+            >
+
+            <label for="fazer">
+                A fazer
+            </label>
+
         </div>
-        
+
+
+        <div class="opcao-radio">
+
+            <input
+                type="radio"
+                id="andamento"
+                name="status"
+                value="em-andamento"
+            >
+
+            <label for="andamento">
+                Em andamento
+            </label>
+
+        </div>
+
+
+        <div class="opcao-radio">
+
+            <input
+                type="radio"
+                id="revisao"
+                name="status"
+                value="em-revisao"
+            >
+
+            <label for="revisao">
+                Em revisão
+            </label>
+
+        </div>
+
+
+        <div class="opcao-radio">
+
+            <input
+                type="radio"
+                id="concluido"
+                name="status"
+                value="concluida"
+            >
+
+            <label for="concluido">
+                Concluído
+            </label>
+
+        </div>
+
     </fieldset>
+
 
     <fieldset>
+
         <legend>Prioridade</legend>
 
-        <div class="opcao-radio">
-            <input type="radio" id="baixa" name="prioridade">
-            <label for="baixa">Baixa</label>
-        </div>
 
         <div class="opcao-radio">
-            <input type="radio" id="media" name="prioridade">
-            <label for="media">Média</label>
+
+            <input
+                type="radio"
+                id="prioridade-todas"
+                name="prioridade"
+                value="todas"
+                checked
+            >
+
+            <label for="prioridade-todas">
+                Todas
+            </label>
+
         </div>
 
+
         <div class="opcao-radio">
-            <input type="radio" id="alta" name="prioridade">
-            <label for="alta">Alta</label>
+
+            <input
+                type="radio"
+                id="baixa"
+                name="prioridade"
+                value="baixa"
+            >
+
+            <label for="baixa">
+                Baixa
+            </label>
+
         </div>
+
+
+        <div class="opcao-radio">
+
+            <input
+                type="radio"
+                id="media"
+                name="prioridade"
+                value="media"
+            >
+
+            <label for="media">
+                Média
+            </label>
+
+        </div>
+
+
+        <div class="opcao-radio">
+
+            <input
+                type="radio"
+                id="alta"
+                name="prioridade"
+                value="alta"
+            >
+
+            <label for="alta">
+                Alta
+            </label>
+
+        </div>
+
     </fieldset>
-    <button type="button">Aplicar filtros</button>
-    </form>
+
+
+    <label for="ordenacao">
+        Ordenar por:
+    </label>
+
+    <select id="ordenacao" name="ordenacao">
+
+        <option value="padrao">
+            Padrão
+        </option>
+
+        <option value="prazo">
+            Prazo
+        </option>
+
+    </select>
+
+
+    <button
+        type="button"
+        id="limpar-filtros"
+    >
+        Limpar filtros
+    </button>
+
+</form>
 
     </section>
 
