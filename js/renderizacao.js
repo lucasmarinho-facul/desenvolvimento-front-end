@@ -10,6 +10,7 @@ export function criarCartao(tarefa) {
 
     titulo.textContent = tarefa.titulo;
 
+
     const projeto = document.createElement("p");
 
     const projetoLabel = document.createElement("strong");
@@ -20,6 +21,7 @@ export function criarCartao(tarefa) {
 
     projeto.append(tarefa.projeto);
 
+
     const responsavel = document.createElement("p");
 
     const responsavelLabel = document.createElement("strong");
@@ -29,6 +31,7 @@ export function criarCartao(tarefa) {
     responsavel.appendChild(responsavelLabel);
 
     responsavel.append(tarefa.responsavel);
+
 
     const prioridade = document.createElement("p");
 
@@ -42,6 +45,7 @@ export function criarCartao(tarefa) {
 
     prioridade.append(tarefa.prioridade);
 
+
     const prazo = document.createElement("p");
 
     prazo.classList.add("prazo");
@@ -54,17 +58,15 @@ export function criarCartao(tarefa) {
 
     prazo.append(tarefa.prazo);
 
+
     const botao = document.createElement("button");
 
     botao.type = "button";
 
     botao.dataset.acao = "ver-detalhes";
 
-    const span = document.createElement("span");
+    botao.textContent = "Ver detalhes";
 
-    span.textContent = "Ver detalhes";
-
-    botao.appendChild(span);
 
     article.appendChild(titulo);
     article.appendChild(projeto);
@@ -81,7 +83,10 @@ export function criarCartao(tarefa) {
 
 export function renderizarTarefas(tarefas, quadro) {
 
-    const colunas = quadro.querySelectorAll("[data-lista-status]");
+    const colunas = quadro.querySelectorAll(
+        "[data-lista-status]"
+    );
+
 
     colunas.forEach((coluna) => {
 
@@ -89,17 +94,21 @@ export function renderizarTarefas(tarefas, quadro) {
 
         const lista = coluna.querySelector("ul");
 
+
         const tarefasDaColuna = tarefas.filter(
             (tarefa) => tarefa.status === status
         );
 
+
         const cartoes = tarefasDaColuna.map(criarCartao);
+
 
         if (cartoes.length === 0) {
 
             const mensagem = document.createElement("li");
 
-            mensagem.textContent = "Nenhuma tarefa nesta coluna.";
+            mensagem.textContent =
+                "Nenhuma tarefa nesta coluna.";
 
             lista.replaceChildren(mensagem);
 
@@ -121,36 +130,39 @@ export function instalarEventosDoQuadro(quadro, tarefas) {
             return;
         }
 
+
         const botao = evento.target.closest(
             'button[data-acao="ver-detalhes"]'
         );
+
 
         if (!botao) {
             return;
         }
 
-        if (!quadro.contains(botao)) {
-            return;
-        }
 
         const cartao = botao.closest("li");
+
 
         if (!cartao) {
             return;
         }
 
+
         const id = Number(cartao.dataset.tarefaId);
+
 
         const tarefa = tarefas.find(
             (item) => item.id === id
         );
 
+
         if (!tarefa) {
             return;
         }
 
+
         console.log(tarefa);
 
     });
-
 }
