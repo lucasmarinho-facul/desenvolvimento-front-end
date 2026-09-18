@@ -1,225 +1,458 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de Tarefas Acadêmicas</title>
-    <link rel="stylesheet" href="styles.css">
+
+<head> <meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>Gerenciador de Tarefas Acadêmicas</title>
+
+<link
+    rel="stylesheet"
+    href="styles.css">
+
 </head>
+
 <body>
 
-    <header>
-        <h1>Gerenciador de Tarefas Acadêmicas</h1>
-    </header>
-    
+<!-- =====================================================
+     CABEÇALHO
+     ===================================================== -->
+
+<header>
+
+    <h1>
+        Gerenciador de Tarefas Acadêmicas
+    </h1>
+
+</header>
+
+
 <main>
 
-    <section  aria-labelledby="titulo-filtros">
+    <!-- =================================================
+         ÁREA DO ESCRITÓRIO
+         ================================================= -->
 
-        <h2 id="titulo-filtros">Busca e filtros</h2>
-
-    <form>
-
-    <label for="busca">Buscar tarefa:</label>
-
-    <input type="search" id="busca" name="busca" placeholder="Digite o título da tarefa">
+    <section
+        class="escritorio"
+        aria-label="Escritório de tarefas">
 
 
-    <fieldset>
+        <!-- =============================================
+             FILTROS
+             ============================================= -->
 
-        <legend>Status</legend>
+        <section
+            class="area-filtros"
+            aria-labelledby="titulo-filtros">
+
+            <h2 id="titulo-filtros">
+                Busca e filtros
+            </h2>
 
 
-        <div class="opcao-radio">
+            <div class="filtros">
 
-            <input type="radio" id="status-todos" name="status" value="todos" checked>
 
-            <label for="status-todos">
-                Todos
-            </label>
+                <!-- BUSCA -->
 
+                <div class="filtro busca">
+
+                    <label for="busca">
+                        Buscar tarefa
+                    </label>
+
+                    <input
+                        type="search"
+                        id="busca"
+                        name="busca"
+                        placeholder="Digite o título...">
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <fieldset class="filtro">
+
+                    <legend>
+                        Status
+                    </legend>
+
+                    <div class="opcoes">
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="status"
+                                value="todos"
+                                checked>
+
+                            Todos
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="status"
+                                value="a-fazer">
+
+                            A fazer
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="status"
+                                value="em-andamento">
+
+                            Em andamento
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="status"
+                                value="em-revisao">
+
+                            Em revisão
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="status"
+                                value="concluida">
+
+                            Concluído
+                        </label>
+
+                    </div>
+
+                </fieldset>
+
+
+                <!-- PRIORIDADE -->
+
+                <fieldset class="filtro">
+
+                    <legend>
+                        Prioridade
+                    </legend>
+
+                    <div class="opcoes">
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="prioridade"
+                                value="todas"
+                                checked>
+
+                            Todas
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="prioridade"
+                                value="baixa">
+
+                            Baixa
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="prioridade"
+                                value="media">
+
+                            Média
+                        </label>
+
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="prioridade"
+                                value="alta">
+
+                            Alta
+                        </label>
+
+                    </div>
+
+                </fieldset>
+
+
+                <!-- ORDENAÇÃO -->
+
+                <div class="filtro ordenacao">
+
+                    <label for="ordenacao">
+                        Ordenar por
+                    </label>
+
+                    <select
+                        id="ordenacao"
+                        name="ordenacao">
+
+                        <option value="padrao">
+                            Padrão
+                        </option>
+
+                        <option value="prazo">
+                            Prazo
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- LIMPAR -->
+
+                <button
+                    type="button"
+                    id="limpar-filtros">
+
+                    Limpar filtros
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =============================================
+             STATUS DA APLICAÇÃO
+             ============================================= -->
+
+        <div
+            id="status"
+            role="status"
+            aria-live="polite">
         </div>
 
 
-        <div class="opcao-radio">
+        <!-- =============================================
+             ESTEIRA
+             ============================================= -->
 
-            <input type="radio" id="fazer" name="status" value="a-fazer">
+        <section
+            class="area-esteira"
+            aria-labelledby="titulo-esteira">
 
-            <label for="fazer">
-                A fazer
-            </label>
-
-        </div>
-
-
-        <div class="opcao-radio">
-
-            <input type="radio" id="andamento" name="status" value="em-andamento">
-
-            <label for="andamento">
-                Em andamento
-            </label>
-
-        </div>
+            <h2 id="titulo-esteira">
+                Esteira de tarefas
+            </h2>
 
 
-        <div class="opcao-radio">
+            <div class="esteira">
 
-            <input type="radio" id="revisao" name="status" value="em-revisao">
+    <div
+        class="esteira-movimento"
+        id="esteira-tarefas">
+    </div>
 
-            <label for="revisao">
-                Em revisão
-            </label>
-
-        </div>
-
-
-        <div class="opcao-radio">
-
-            <input type="radio" id="concluido" name="status" value="concluida">
-
-            <label for="concluido">
-                Concluído
-            </label>
-
-        </div>
-
-    </fieldset>
+</div>
 
 
-    <fieldset>
+            <!-- BOTÃO CENTRALIZADO -->
 
-        <legend>Prioridade</legend>
+            <div class="controle-esteira-container">
 
+                <button
+                    type="button"
+                    id="controle-esteira"
+                    class="controle-esteira"
+                    aria-pressed="false">
 
-        <div class="opcao-radio">
+                    ⏸ Pausar esteira
 
-            <input type="radio" id="prioridade-todas" name="prioridade" value="todas" checked>
+                </button>
 
-            <label for="prioridade-todas">
-                Todas
-            </label>
+            </div>
 
-        </div>
-
-
-        <div class="opcao-radio">
-
-            <input type="radio" id="baixa" name="prioridade" value="baixa">
-
-            <label for="baixa">
-                Baixa
-            </label>
-
-        </div>
+        </section>
 
 
-        <div class="opcao-radio">
+        <!-- =============================================
+             MESA
+             ============================================= -->
 
-            <input type="radio" id="media" name="prioridade" value="media">
+        <section
+            class="area-mesa"
+            aria-labelledby="titulo-mesa">
 
-            <label for="media">
-                Média
-            </label>
-
-        </div>
-
-
-        <div class="opcao-radio">
-
-            <input type="radio" id="alta" name="prioridade" value="alta">
-
-            <label for="alta">
-                Alta
-            </label>
-
-        </div>
-
-    </fieldset>
+            <h2 id="titulo-mesa">
+                Mesa de trabalho
+            </h2>
 
 
-    <label for="ordenacao">
-        Ordenar por:
-    </label>
-
-    <select id="ordenacao" name="ordenacao">
-
-        <option value="padrao">
-            Padrão
-        </option>
-
-        <option value="prazo">
-            Prazo
-        </option>
-
-    </select>
+            <div
+                class="mesa"
+                id="mesa">
 
 
-    <button type="button" id="limpar-filtros">
-        Limpar filtros
-    </button>
+                <!--
+                    A tarefa selecionada
+                    será colocada aqui pelo JavaScript.
+                -->
 
-</form>
+                <div
+                    class="mesa-vazia"
+                    id="mesa-vazia">
+
+                    <div class="icone-mesa">
+                        📋
+                    </div>
+
+                    <p>
+                        Clique em uma tarefa da esteira
+                        para colocá-la sobre a mesa.
+                    </p>
+
+                </div>
+
+
+                <article
+                    class="tarefa-na-mesa"
+                    id="tarefa-na-mesa"
+                    hidden>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =============================================
+             QUADRO
+             ============================================= -->
+
+        <section
+            class="area-quadro"
+            aria-labelledby="titulo-quadro">
+
+            <h2 id="titulo-quadro">
+                Quadro de tarefas
+            </h2>
+
+
+            <div class="quadro-tarefas">
+
+
+                <!-- A FAZER -->
+
+                <section
+                    class="coluna-tarefas status-a-fazer"
+                    data-lista-status="a-fazer">
+
+                    <h3>
+                        A fazer
+                    </h3>
+
+                    <ul>
+                    </ul>
+
+                </section>
+
+
+                <!-- EM ANDAMENTO -->
+
+                <section
+                    class="coluna-tarefas status-andamento"
+                    data-lista-status="em-andamento">
+
+                    <h3>
+                        Em andamento
+                    </h3>
+
+                    <ul>
+                    </ul>
+
+                </section>
+
+
+                <!-- EM REVISÃO -->
+
+                <section
+                    class="coluna-tarefas status-revisao"
+                    data-lista-status="em-revisao">
+
+                    <h3>
+                        Em revisão
+                    </h3>
+
+                    <ul>
+                    </ul>
+
+                </section>
+
+
+                <!-- CONCLUÍDO -->
+
+                <section
+                    class="coluna-tarefas status-concluido"
+                    data-lista-status="concluida">
+
+                    <h3>
+                        Concluído
+                    </h3>
+
+                    <ul>
+                    </ul>
+
+                </section>
+
+            </div>
+
+        </section>
 
     </section>
-
-     <div id="status" role="status" aria-live="polite"></div>
-
-    <h2>Quadro de tarefas</h2>
-    <section class="quadro-tarefas">
-        
-
-        <section class="status-a-fazer" data-lista-status="a-fazer" aria-labelledby="titulo-afazer">
-            <h3 id="titulo-afazer">A fazer</h3>
-
-            <ul>
-
-            </ul>
-
-        </section>
-
-        <section class="status-andamento" data-lista-status="em-andamento" aria-labelledby="titulo-andamento">
-            <h3 id="titulo-andamento">Em andamento</h3>
-
-            <ul>
-
-            </ul>
-
-
-        </section>
-
-        <section class="status-revisao" data-lista-status="em-revisao" aria-labelledby="titulo-revisao">
-            <h3 id="titulo-revisao">Em revisao</h3>
-
-            <ul>
-
-            </ul>
-
-
-        </section>
-
-        <section 
-        class="status-concluido" data-lista-status="concluida" aria-labelledby="titulo-concluido">
-            <h3 id="titulo-concluido">concluido</h3>
-
-            <ul>
-
-            </ul>
-
-
-        </section>
-
-    </section>
-
-    
 
 </main>
 
+
+<!-- =====================================================
+     RODAPÉ
+     ===================================================== -->
+
 <footer>
-    <p>Lucas Cardoso Marinho</p>
-    <p>Disciplina: Desenvolvimento Frontend - 2026.2</p>
+
+    <p>
+        Lucas Cardoso Marinho
+    </p>
+
+    <p>
+        Disciplina: Desenvolvimento Frontend - 2026.2
+    </p>
+
 </footer>
 
-<script type="module" src="./js/app.js"></script>
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script
+    type="module"
+    src="./js/app.js">
+</script>
+
 </body>
+
 </html>

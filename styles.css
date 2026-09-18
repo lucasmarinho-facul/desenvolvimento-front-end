@@ -1,14 +1,24 @@
+
 :root {
-    --cor-fundo: #f5f5f5;
-    --cor-superficie: #ffffff;
-    --cor-texto: #222222;
-    --cor-borda: #cccccc;
+    /* =====================================================
+       PALETA — OFICINA / MÁQUINA
+       ===================================================== */
+
+    --cor-fundo: #b8ad9b;
+    --cor-superficie: #f1ede5;
+    --cor-texto: #242424;
+    --cor-borda: #756b5d;
+
     --cor-botao: #013588;
+    --cor-botao-hover: #0248b5;
 
     --cor-a-fazer: #e3b341;
     --cor-andamento: #3b82f6;
     --cor-revisao: #8b5cf6;
     --cor-concluido: #22c55e;
+
+    --cor-mesa: #8b5a2b;
+    --cor-mesa-clara: #a86f3d;
 
     --espaco-pequeno: 0.5rem;
     --espaco-medio: 1rem;
@@ -16,6 +26,11 @@
 
     --raio: 0.5rem;
 }
+
+
+/* =========================================================
+   CONFIGURAÇÕES GERAIS
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -27,287 +42,2159 @@ html {
 
 body {
     margin: 0;
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
+
+    /*
+     * FUNDO GERAL
+     *
+     * A ideia aqui é representar o piso de uma oficina.
+     * Não é branco nem cinza puro para combinar melhor
+     * com a madeira e com o metal da máquina.
+     */
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 255, 255, 0.12) 0,
+            rgba(255, 255, 255, 0.12) 1px,
+            transparent 2px
+        ),
+
+        repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.035) 0,
+            rgba(0, 0, 0, 0.035) 1px,
+            transparent 1px,
+            transparent 5px
+        ),
+
+        linear-gradient(
+            135deg,
+            #c4b9a7,
+            #a99e8d
+        );
+
+    background-size:
+        18px 18px,
+        100% 6px,
+        100% 100%;
+
+    background-attachment:
+        fixed;
+
+    color:
+        var(--cor-texto);
+
+    font-family:
+        Arial, sans-serif;
+
+    line-height:
+        1.5;
 }
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
 
 header {
-    background-color: var(--cor-superficie);
-    border-bottom: 1px solid var(--cor-borda);
-    padding: var(--espaco-grande);
+    padding:
+        1.5rem;
+
+    background:
+        linear-gradient(
+            180deg,
+            #303030,
+            #1b1b1b
+        );
+
+    color:
+        white;
+
+    border-bottom:
+        5px solid #111;
+
+    box-shadow:
+        0 4px 0
+        rgba(0, 0, 0, 0.3),
+
+        inset 0 -1px 0
+        #555;
 }
 
-h1 {
-    margin: 0;
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+header h1 {
+    max-width:
+        120rem;
+
+    margin:
+        0 auto;
+
+    font-size:
+        clamp(
+            1.5rem,
+            4vw,
+            2.5rem
+        );
+
+    letter-spacing:
+        0.02em;
+
+    text-shadow:
+        2px 2px 0 #000;
 }
+
+
+/* =========================================================
+   CONTEÚDO
+========================================================= */
+
+main {
+    width:
+        100%;
+
+    max-width:
+        120rem;
+
+    margin:
+        0 auto;
+
+    padding:
+        var(--espaco-medio);
+}
+
+.escritorio {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        var(--espaco-grande);
+}
+
+
+/* =========================================================
+   TÍTULOS
+========================================================= */
 
 h2 {
-    font-size: 1.5rem;
+    margin-top:
+        0;
+
+    font-size:
+        1.5rem;
 }
 
 h3 {
-    font-size: 1.25rem;
+    margin:
+        0;
+
+    font-size:
+        1.2rem;
 }
 
-h4 {
-    font-size: 1.125rem;
+
+/* =========================================================
+   FILTROS — PAINEL DA MÁQUINA
+========================================================= */
+
+.area-filtros {
+    position:
+        relative;
+
+    padding:
+        1.25rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            #3a3a3a,
+            #242424
+        );
+
+    color:
+        white;
+
+    border:
+        4px solid #111;
+
+    border-radius:
+        0.75rem;
+
+    box-shadow:
+        inset 0 0 0 2px #555,
+        inset 0 -6px 0
+        rgba(0, 0, 0, 0.35),
+        0 6px 0 #111;
 }
 
-main {
-    width: 100%;
-    max-width: 120rem;
-    margin: 0 auto;
-    padding: var(--espaco-medio);
+
+/*
+ * Luz indicadora no painel
+ */
+
+.area-filtros::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0.5rem;
+
+    right:
+        0.75rem;
+
+    width:
+        0.5rem;
+
+    height:
+        0.5rem;
+
+    background:
+        #22c55e;
+
+    border-radius:
+        50%;
+
+    box-shadow:
+        0 0 5px
+        #22c55e,
+
+        0 0 10px
+        rgba(34, 197, 94, 0.7);
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--espaco-medio);
-    margin-bottom: var(--espaco-grande);
+
+.area-filtros h2 {
+    margin-bottom:
+        1.25rem;
+
+    color:
+        #f5f5f5;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.08em;
+
+    font-size:
+        1.2rem;
+
+    text-shadow:
+        2px 2px 0 #111;
 }
 
-label {
-    font-weight: bold;
+
+.filtros {
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    gap:
+        var(--espaco-medio);
+
+    flex-wrap:
+        wrap;
 }
+
+
+.filtro {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        0.35rem;
+}
+
+
+.filtro > label {
+    font-weight:
+        bold;
+}
+
+
+.busca {
+    flex:
+        1 1 15rem;
+}
+
+
+/* =========================================================
+   CAMPO DE BUSCA
+========================================================= */
 
 input[type="search"] {
-    width: 100%;
-    min-height: 2.75rem;
-    padding: var(--espaco-pequeno);
+    width:
+        100%;
 
-    border: 1px solid var(--cor-borda);
-    border-radius: var(--raio);
+    min-height:
+        2.9rem;
 
-    background-color: var(--cor-superficie);
-    color: var(--cor-texto);
+    padding:
+        0.5rem 0.75rem;
 
-    font-size: 1rem;
+    background-color:
+        #111;
+
+    color:
+        white;
+
+    border:
+        2px solid #555;
+
+    border-radius:
+        0.35rem;
+
+    box-shadow:
+        inset 0 3px 5px
+        rgba(0, 0, 0, 0.5);
+
+    outline:
+        none;
+
+    font-weight:
+        bold;
 }
 
-input:focus-visible{
-    outline: 0.2rem solid var(--cor-andamento);
-    outline-offset: 0.15rem;
+
+input[type="search"]::placeholder {
+    color:
+        #888;
 }
+
+
+input[type="search"]:focus {
+    border-color:
+        #3b82f6;
+
+    box-shadow:
+        inset 0 3px 5px
+        rgba(0, 0, 0, 0.5),
+
+        0 0 0 2px
+        rgba(59, 130, 246, 0.25),
+
+        0 0 10px
+        rgba(59, 130, 246, 0.25);
+}
+
+
+/* =========================================================
+   FIELDSET — MÓDULO DA MÁQUINA
+========================================================= */
 
 fieldset {
-    margin: 0;
-    padding: var(--espaco-medio);
+    margin:
+        0;
 
-    border: 1px solid var(--cor-borda);
-    border-radius: var(--raio);
+    padding:
+        0.75rem;
 
-    background-color: var(--cor-superficie);
+    background:
+        linear-gradient(
+            145deg,
+            #303030,
+            #1f1f1f
+        );
 
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--espaco-medio);
+    border:
+        2px solid #111;
+
+    border-radius:
+        0.5rem;
+
+    box-shadow:
+        inset 0 0 0 1px #4d4d4d,
+        0 3px 0 #111;
 }
 
 
-.opcao-radio {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--espaco-pequeno);
-    white-space: nowrap; 
-}
+.area-filtros fieldset legend {
+    padding:
+        0.2rem 0.6rem;
 
-fieldset label {
-    margin: 0;
-    font-weight: normal;
-    cursor: pointer;
-}
+    background-color:
+        #111;
 
-fieldset input[type="radio"] {
-    min-width: 1.25rem;
-    min-height: 1.25rem;
-    margin: 0;
-    cursor: pointer;
-}
+    border:
+        1px solid #555;
 
-.quadro-tarefas {
-    display: grid;
-    gap: var(--espaco-medio);
-}
+    border-radius:
+        0.25rem;
 
-.quadro-tarefas > section {
-    display: flex;
-    flex-direction: column;
-    gap: var(--espaco-medio);
+    color:
+        #ddd;
 
-    min-width: 0;
+    font-size:
+        0.75rem;
 
-    padding: var(--espaco-medio);
-    background-color: var(--cor-superficie);
-    border: 1px solid var(--cor-borda);
-    border-radius: var(--raio);
-}
+    font-weight:
+        bold;
 
-.status-a-fazer article {
-    border-top: 0.35rem solid var(--cor-a-fazer);
-}
+    text-transform:
+        uppercase;
 
-.status-andamento article{
-    border-top: 0.35rem solid var(--cor-andamento);
-}
-
-.status-revisao article{
-    border-top: 0.35rem solid var(--cor-revisao);
-}
-
-.status-concluido article{
-    border-top: 0.35rem solid var(--cor-concluido);
-}
-
-ul {
-    display: flex;
-    flex-direction: column;
-    gap: var(--espaco-medio);
-
-    margin: 0;
-    padding: 0;
-
-    list-style: none;
-}
-
-article {
-    display: flex;
-    flex-direction: column;
-    gap: var(--espaco-pequeno);
-
-    min-width: 0;
-    height: 100%;
-
-    padding: var(--espaco-medio);
-
-    background-color: var(--cor-superficie);
-
-    border: 1px solid var(--cor-borda);
-    border-radius: var(--raio);
-}
-
-article h4 {
-    flex: 1;
-    min-width: 0;
-
-    margin: 0;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    letter-spacing:
+        0.08em;
 }
 
 
-article p {
-    margin: 0;
+/* =========================================================
+   OPÇÕES DOS RADIO BUTTONS
+========================================================= */
+
+.opcoes {
+    display:
+        flex;
+
+    align-items:
+        stretch;
+
+    gap:
+        0.5rem;
+
+    flex-wrap:
+        wrap;
 }
 
-.prazo {
-    margin-top: auto;
+
+/* =========================================================
+   LABEL — BOTÃO FÍSICO DA MÁQUINA
+========================================================= */
+
+.opcoes label {
+    position:
+        relative;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-height:
+        2.7rem;
+
+    padding:
+        0.55rem 0.85rem;
+
+    background:
+        linear-gradient(
+            180deg,
+            #555,
+            #292929
+        );
+
+    color:
+        #d5d5d5;
+
+    border:
+        2px solid #111;
+
+    border-radius:
+        0.35rem;
+
+    box-shadow:
+        inset 0 1px 0 #777,
+        0 3px 0 #111;
+
+    font-size:
+        0.85rem;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    user-select:
+        none;
+
+    transition:
+        transform 0.08s ease,
+        background 0.15s ease,
+        color 0.15s ease,
+        box-shadow 0.08s ease;
 }
 
-.prioridade {
-    font-weight: bold;
+
+/* =========================================================
+   ESCONDE O RADIO ORIGINAL
+========================================================= */
+
+.opcoes input[type="radio"] {
+    position:
+        absolute;
+
+    width:
+        1px;
+
+    height:
+        1px;
+
+    margin:
+        -1px;
+
+    padding:
+        0;
+
+    overflow:
+        hidden;
+
+    clip:
+        rect(0, 0, 0, 0);
+
+    white-space:
+        nowrap;
+
+    border:
+        0;
 }
 
-footer {
-    margin-top: var(--espaco-grande);
-    padding: var(--espaco-grande);
 
-    background-color: var(--cor-superficie);
-    border-top: 1px solid var(--cor-borda);
+/* =========================================================
+   HOVER
+========================================================= */
 
-    text-align: center;
+.opcoes label:hover {
+    background:
+        linear-gradient(
+            180deg,
+            #666,
+            #333
+        );
+
+    color:
+        white;
+
+    transform:
+        translateY(-1px);
 }
 
-footer p {
-    margin: 0;
+
+/* =========================================================
+   BOTÃO PRESSIONADO
+========================================================= */
+
+.opcoes label:active {
+    transform:
+        translateY(2px);
+
+    box-shadow:
+        inset 0 2px 3px
+        rgba(0, 0, 0, 0.5),
+
+        0 1px 0 #111;
 }
 
-button {
-    width: fit-content;
-    min-height: 2.75rem;
-    padding: var(--espaco-pequeno) var(--espaco-medio);
 
-    background-color: var(--cor-botao);
-    color: var(--cor-superficie);
+/* =========================================================
+   FOCO DO TECLADO
+========================================================= */
 
-    border: 0;
-    border-radius: var(--raio);
+.opcoes label:has(
+    input[type="radio"]:focus-visible
+) {
+    outline:
+        3px solid
+        #60a5fa;
 
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
+    outline-offset:
+        3px;
 }
 
-button:focus-visible {
-    outline: 0.2rem solid var(--cor-andamento);
-    outline-offset: 0.15rem;
+
+/* =========================================================
+   BOTÃO SELECIONADO — PADRÃO
+========================================================= */
+
+.opcoes label:has(
+    input[type="radio"]:checked
+) {
+    background:
+        linear-gradient(
+            180deg,
+            #0d63d8,
+            #013588
+        );
+
+    color:
+        white;
+
+    border-color:
+        #0a2d66;
+
+    box-shadow:
+        inset 0 1px 0 #4f91e8,
+        0 3px 0 #061c3d,
+        0 0 10px
+        rgba(1, 83, 190, 0.45);
 }
 
-/* 
-   A partir de 60rem as quatro colunas conseguem ficar lado a lado
-   sem deixar os cartões estreitos demais.
-*/
 
+/* =========================================================
+   LUZ DO BOTÃO SELECIONADO
+========================================================= */
 
-@media (min-width: 60rem) {
+.opcoes label:has(
+    input[type="radio"]:checked
+)::before {
+    content:
+        "";
 
-    .quadro-tarefas {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
+    width:
+        0.45rem;
 
+    height:
+        0.45rem;
+
+    margin-right:
+        0.45rem;
+
+    background-color:
+        #7dd3fc;
+
+    border-radius:
+        50%;
+
+    box-shadow:
+        0 0 5px #38bdf8,
+        0 0 10px #38bdf8;
 }
 
-#status {
-    min-height: 1.5rem;
-    margin-bottom: var(--espaco-medio);
-    font-weight: bold;
+
+/* =========================================================
+   TODOS / TODAS
+========================================================= */
+
+.opcoes label:has(
+    input[type="radio"][value="todos"]:checked
+),
+.opcoes label:has(
+    input[type="radio"][value="todas"]:checked
+) {
+    background:
+        linear-gradient(
+            180deg,
+            #0d63d8,
+            #013588
+        );
 }
+
+
+/* =========================================================
+   STATUS — A FAZER
+========================================================= */
+
+.opcoes label:has(
+    input[type="radio"][value="a-fazer"]:checked
+) {
+    background:
+        linear-gradient(
+            180deg,
+            #d6a72c,
+            #927016
+        );
+
+    border-color:
+        #604b0b;
+
+    box-shadow:
+        inset 0 1px 0 #f1d36d,
+        0 3px 0 #493807,
+        0 0 12px
+        rgba(227, 179, 65, 0.5);
+}
+
+
+.opcoes label:has(
+    input[type="radio"][value="a-fazer"]:checked
+)::before {
+    background-color:
+        #fff1a8;
+
+    box-shadow:
+        0 0 5px #ffe66d,
+        0 0 12px #e3b341;
+}
+
+
+/* =========================================================
+   STATUS — EM ANDAMENTO
+========================================================= */
+
+.opcoes label:has(
+    input[type="radio"][value="em-andamento"]:checked
+) {
+    background:
+        linear-gradient(
+            180deg,
+            #3b82f6,
+            #174ea6
+        );
+
+    border-color:
+        #10366f;
+
+    box-shadow:
+        inset 0 1px 0 #7db0ff,
+        0 3px 0 #0b244d,
+        0 0 12px
+        rgba(59, 130, 246, 0.5);
+}
+
+
+.opcoes label:has(
+    input[type="radio"][value="em-andamento"]:checked
+)::before {
+    background-color:
+        #bfdbfe;
+
+    box-shadow:
+        0 0 5px #60a5fa,
+        0 0 12px #3b82f6;
+}
+
+
+/* =========================================================
+   STATUS — EM REVISÃO
+========================================================= */
+
+.opcoes label:has(
+    input[type="radio"][value="em-revisao"]:checked
+) {
+    background:
+        linear-gradient(
+            180deg,
+            #8b5cf6,
+            #5b21b6
+        );
+
+    border-color:
+        #3b167d;
+
+    box-shadow:
+        inset 0 1px 0 #b99aff,
+        0 3px 0 #29104f,
+        0 0 12px
+        rgba(139, 92, 246, 0.5);
+}
+
+
+.opcoes label:has(
+    input[type="radio"][value="em-revisao"]:checked
+)::before {
+    background-color:
+        #ddd6fe;
+
+    box-shadow:
+        0 0 5px #c4b5fd,
+        0 0 12px #8b5cf6;
+}
+
+
+/* =========================================================
+   STATUS — CONCLUÍDO
+========================================================= */
+
+.opcoes label:has(
+    input[type="radio"][value="concluida"]:checked
+) {
+    background:
+        linear-gradient(
+            180deg,
+            #22c55e,
+            #15803d
+        );
+
+    border-color:
+        #0c4a25;
+
+    box-shadow:
+        inset 0 1px 0 #7bea9e,
+        0 3px 0 #073019,
+        0 0 12px
+        rgba(34, 197, 94, 0.5);
+}
+
+
+.opcoes label:has(
+    input[type="radio"][value="concluida"]:checked
+)::before {
+    background-color:
+        #bbf7d0;
+
+    box-shadow:
+        0 0 5px #86efac,
+        0 0 12px #22c55e;
+}
+
+
+/* =========================================================
+   PRIORIDADE — BAIXA
+========================================================= */
+
+.opcoes label:has(
+    input[type="radio"][value="baixa"]:checked
+) {
+    background:
+        linear-gradient(
+            180deg,
+            #22c55e,
+            #15803d
+        );
+
+    border-color:
+        #0c4a25;
+
+    box-shadow:
+        inset 0 1px 0 #7bea9e,
+        0 3px 0 #073019,
+        0 0 12px
+        rgba(34, 197, 94, 0.45);
+}
+
+
+/* =========================================================
+   PRIORIDADE — MÉDIA
+========================================================= */
+
+.opcoes label:has(
+    input[type="radio"][value="media"]:checked
+) {
+    background:
+        linear-gradient(
+            180deg,
+            #eab308,
+            #a16207
+        );
+
+    border-color:
+        #543603;
+
+    box-shadow:
+        inset 0 1px 0 #fde68a,
+        0 3px 0 #543603,
+        0 0 12px
+        rgba(234, 179, 8, 0.45);
+}
+
+
+/* =========================================================
+   PRIORIDADE — ALTA
+========================================================= */
+
+.opcoes label:has(
+    input[type="radio"][value="alta"]:checked
+) {
+    background:
+        linear-gradient(
+            180deg,
+            #ef4444,
+            #991b1b
+        );
+
+    border-color:
+        #4c0808;
+
+    box-shadow:
+        inset 0 1px 0 #fca5a5,
+        0 3px 0 #4c0808,
+        0 0 12px
+        rgba(239, 68, 68, 0.5);
+}
+
+
+/* =========================================================
+   SELECT — PAINEL
+========================================================= */
 
 select {
-    width: fit-content;
-    min-height: 2.75rem;
-    padding: var(--espaco-pequeno) var(--espaco-medio);
+    min-height:
+        2.9rem;
 
-    border: 1px solid var(--cor-borda);
-    border-radius: var(--raio);
+    padding:
+        0.5rem
+        2rem
+        0.5rem
+        0.75rem;
 
-    background-color: var(--cor-superficie);
-    color: var(--cor-texto);
+    background:
+        linear-gradient(
+            180deg,
+            #444,
+            #222
+        );
 
-    font-size: 1rem;
+    color:
+        white;
+
+    border:
+        2px solid #111;
+
+    border-radius:
+        0.35rem;
+
+    box-shadow:
+        inset 0 1px 0 #666,
+        0 3px 0 #111;
+
+    outline:
+        none;
+
+    cursor:
+        pointer;
+
+    font-weight:
+        bold;
 }
 
 
-select:focus-visible {
-    outline: 0.2rem solid var(--cor-andamento);
-    outline-offset: 0.15rem;
+select:focus {
+    border-color:
+        #3b82f6;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(59, 130, 246, 0.25),
+
+        0 0 10px
+        rgba(59, 130, 246, 0.25);
+}
+
+
+/* =========================================================
+   BOTÕES GERAIS
+========================================================= */
+
+button {
+    min-height:
+        2.75rem;
+
+    padding:
+        0.5rem 1rem;
+
+    background:
+        linear-gradient(
+            180deg,
+            #444,
+            #222
+        );
+
+    color:
+        white;
+
+    border:
+        2px solid #111;
+
+    border-radius:
+        0.35rem;
+
+    box-shadow:
+        inset 0 1px 0 #666,
+        0 3px 0 #111;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    outline:
+        none;
+
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease,
+        box-shadow 0.1s ease;
 }
 
 
 button:hover {
-    opacity: 0.9;
+    background:
+        linear-gradient(
+            180deg,
+            #555,
+            #292929
+        );
+
+    transform:
+        translateY(-1px);
 }
 
-/* A partir de 30rem, os controles de busca e filtros
-   ganham espaço suficiente para serem organizados lado a lado
-   sem deixar a interface apertada. */
 
-@media (max-width: 30rem) {
+button:active {
+    transform:
+        translateY(2px);
+
+    box-shadow:
+        inset 0 2px 3px
+        rgba(0, 0, 0, 0.5),
+
+        0 1px 0 #111;
+}
+
+
+button:focus-visible {
+    outline:
+        2px solid
+        var(--cor-andamento);
+
+    outline-offset:
+        3px;
+}
+
+
+/* =========================================================
+   BOTÃO LIMPAR FILTROS
+========================================================= */
+
+#limpar-filtros {
+    background:
+        linear-gradient(
+            180deg,
+            #555,
+            #292929
+        );
+
+    border:
+        2px solid #111;
+
+    box-shadow:
+        inset 0 1px 0 #777,
+        0 3px 0 #111;
+}
+
+
+#limpar-filtros:hover {
+    background:
+        linear-gradient(
+            180deg,
+            #666,
+            #333
+        );
+}
+
+
+/* =========================================================
+   STATUS DA APLICAÇÃO
+   — CONEXÃO DE MADEIRA COM A ESTEIRA
+========================================================= */
+
+#status {
+    position:
+        relative;
+
+    min-height:
+        3.5rem;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    padding:
+        0.75rem 1rem;
+
+    /*
+     * Negativo para a madeira ficar visualmente
+     * encaixada entre os módulos.
+     */
+    margin-top:
+        -0.75rem;
+
+    margin-bottom:
+        -0.75rem;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #6f4325 0,
+            #6f4325 65px,
+            #7d4d2d 67px,
+            #5c351d 70px
+        );
+
+    color:
+        #fff;
+
+    border-top:
+        4px solid #4a2a17;
+
+    border-bottom:
+        4px solid #3d2417;
+
+    border-radius:
+        0.5rem;
+
+    box-shadow:
+        inset 0 3px 0
+        rgba(255, 255, 255, 0.08),
+
+        inset 0 -3px 0
+        rgba(0, 0, 0, 0.25),
+
+        0 3px 0
+        rgba(0, 0, 0, 0.25);
+
+    font-weight:
+        bold;
+
+    text-shadow:
+        1px 1px 0 #3d2417;
+}
+
+
+/*
+ * Luz de funcionamento
+ */
+
+#status::before {
+    content:
+        "●";
+
+    margin-right:
+        0.6rem;
+
+    color:
+        var(--cor-concluido);
+
+    font-size:
+        0.8rem;
+
+    text-shadow:
+        0 0 5px
+        rgba(34, 197, 94, 0.8);
+}
+
+
+/* =========================================================
+   ESTEIRA
+========================================================= */
+
+.area-esteira {
+    position:
+        relative;
+
+    width:
+        100%;
+}
+
+
+.area-esteira > h2 {
+    margin-bottom:
+        0.75rem;
+}
+
+
+.esteira {
+    position:
+        relative;
+
+    width:
+        100%;
+
+    height:
+        9rem;
+
+    overflow:
+        hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #292929,
+            #171717
+        );
+
+    border:
+        5px solid #111;
+
+    border-radius:
+        var(--raio);
+
+    box-shadow:
+        inset 0 0 0 2px #444,
+
+        inset 0 -8px 0
+        rgba(0, 0, 0, 0.5),
+
+        0 5px 0 #111;
+}
+
+
+/*
+ * Faixas metálicas da esteira
+ */
+
+.esteira::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    bottom:
+        0;
+
+    height:
+        0.5rem;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #444 0,
+            #444 35px,
+            #222 35px,
+            #222 45px
+        );
+
+    border-top:
+        2px solid #555;
+
+    opacity:
+        0.8;
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   CONTAINER DA ESTEIRA
+========================================================= */
+
+#esteira-tarefas {
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    width:
+        max-content;
+
+    height:
+        100%;
+
+    padding:
+        0;
+
+    margin:
+        0;
+
+    gap:
+        0;
+
+    will-change:
+        transform;
+
+    --distancia-esteira:
+        0px;
+}
+
+
+/* =========================================================
+   GRUPO DA ESTEIRA
+========================================================= */
+
+.grupo-esteira {
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    flex-shrink:
+        0;
+
+    gap:
+        2rem;
+
+    height:
+        100%;
+
+    padding:
+        0.75rem 1rem;
+}
+
+
+/* =========================================================
+   ANIMAÇÃO
+========================================================= */
+
+#esteira-tarefas.esteira-animando {
+    animation:
+        movimento-esteira
+        var(--duracao-esteira, 20s)
+        linear
+        infinite;
+}
+
+
+@keyframes movimento-esteira {
+
+    from {
+        transform:
+            translateX(0);
+    }
+
+    to {
+        transform:
+            translateX(
+                calc(
+                    -1 *
+                    var(--distancia-esteira)
+                )
+            );
+    }
+}
+
+
+/* =========================================================
+   PAUSAR ESTEIRA
+========================================================= */
+
+#esteira-tarefas.pausada {
+    animation-play-state:
+        paused !important;
+}
+
+
+/* =========================================================
+   CAIXAS DA ESTEIRA
+========================================================= */
+
+.caixa-tarefa {
+    position:
+        relative;
+
+    flex:
+        0 0 12rem;
+
+    width:
+        12rem;
+
+    height:
+        5.5rem;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        1rem;
+
+    padding-top:
+        1.25rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #e7e7e7
+        );
+
+    color:
+        var(--cor-texto);
+
+    text-align:
+        center;
+
+    font-weight:
+        bold;
+
+    border:
+        1px solid #aaa;
+
+    border-top:
+        0.5rem solid
+        var(--cor-estado);
+
+    border-radius:
+        var(--raio);
+
+    box-shadow:
+        5px 5px 0 #111;
+
+    cursor:
+        pointer;
+
+    user-select:
+        none;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.caixa-tarefa:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        5px 9px 0 #111;
+}
+
+
+.caixa-tarefa:focus-visible {
+    outline:
+        3px solid white;
+
+    outline-offset:
+        3px;
+}
+
+
+/* =========================================================
+   CAIXA VAZIA
+========================================================= */
+
+.caixa-tarefa-vazia {
+    background:
+        #333;
+
+    border:
+        1px dashed #555;
+
+    box-shadow:
+        none;
+
+    cursor:
+        default;
+
+    pointer-events:
+        none;
+}
+
+
+.caixa-tarefa-vazia:hover {
+    transform:
+        none;
+
+    box-shadow:
+        none;
+}
+
+
+/* =========================================================
+   ESTEIRA VAZIA
+========================================================= */
+
+.esteira-vazia {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    padding:
+        1rem;
+
+    color:
+        white;
+
+    font-weight:
+        bold;
+}
+
+
+/* =========================================================
+   CONTROLE DA ESTEIRA
+========================================================= */
+
+.controle-esteira-container {
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    margin-top:
+        1rem;
+}
+
+
+.controle-esteira {
+    min-width:
+        12rem;
+
+    background:
+        linear-gradient(
+            180deg,
+            #444,
+            #222
+        );
+
+    border:
+        2px solid #111;
+
+    box-shadow:
+        inset 0 1px 0 #666,
+        0 3px 0 #111;
+}
+
+
+/* =========================================================
+   MESA
+========================================================= */
+
+.area-mesa {
+    width:
+        100%;
+}
+
+
+.mesa {
+    position:
+        relative;
+
+    min-height:
+        25rem;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        2rem;
+
+    overflow:
+        hidden;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            var(--cor-mesa) 0,
+            var(--cor-mesa) 70px,
+            var(--cor-mesa-clara) 72px,
+            var(--cor-mesa) 75px
+        );
+
+    border:
+        8px solid #563619;
+
+    border-radius:
+        0.75rem;
+
+    box-shadow:
+        inset 0 0 20px
+        rgba(0, 0, 0, 0.35),
+
+        0 10px 0
+        #3d2817;
+}
+
+
+/* =========================================================
+   MESA VAZIA
+========================================================= */
+
+.mesa-vazia {
+    max-width:
+        25rem;
+
+    padding:
+        2rem;
+
+    background-color:
+        rgba(255, 255, 255, 0.9);
+
+    border-radius:
+        var(--raio);
+
+    text-align:
+        center;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.3);
+}
+
+
+.icone-mesa {
+    font-size:
+        3rem;
+}
+
+
+.mesa-vazia p {
+    margin-bottom:
+        0;
+}
+
+
+/* =========================================================
+   TAREFA SOBRE A MESA
+========================================================= */
+
+.tarefa-na-mesa {
+    position:
+        relative;
+
+    width:
+        min(
+            100%,
+            32rem
+        );
+
+    min-height:
+        18rem;
+
+    padding:
+        1.5rem;
+
+    background-color:
+        #fffdf3;
+
+    border-radius:
+        0.25rem;
+
+    border-top:
+        0.6rem solid
+        var(--cor-estado);
+
+    box-shadow:
+        0 8px 15px
+        rgba(0, 0, 0, 0.4),
+
+        3px 3px 0
+        rgba(0, 0, 0, 0.15);
+
+    transform:
+        rotate(-1deg);
+}
+
+
+.tarefa-na-mesa h3 {
+    margin-bottom:
+        1rem;
+
+    padding-right:
+        2rem;
+
+    font-size:
+        1.5rem;
+}
+
+
+.tarefa-na-mesa p {
+    margin:
+        0.5rem 0;
+}
+
+
+.tarefa-na-mesa strong {
+    color:
+        #333;
+}
+
+
+/* =========================================================
+   FECHAR TAREFA
+========================================================= */
+
+.fechar-tarefa {
+    position:
+        absolute;
+
+    top:
+        0.75rem;
+
+    right:
+        0.75rem;
+
+    min-width:
+        2.2rem;
+
+    width:
+        2.2rem;
+
+    height:
+        2.2rem;
+
+    min-height:
+        2.2rem;
+
+    padding:
+        0;
+
+    border-radius:
+        50%;
+
+    background-color:
+        #333;
+
+    font-size:
+        1rem;
+}
+
+
+.fechar-tarefa:hover {
+    background-color:
+        #111;
+}
+
+
+/* =========================================================
+   QUADRO
+========================================================= */
+
+.area-quadro {
+    width:
+        100%;
+}
+
+
+.quadro-tarefas {
+    display:
+        grid;
+
+    gap:
+        var(--espaco-medio);
+}
+
+
+.coluna-tarefas {
+    min-width:
+        0;
+
+    padding:
+        var(--espaco-medio);
+
+    background:
+        linear-gradient(
+            145deg,
+            #f7f4ed,
+            #e6e1d8
+        );
+
+    border:
+        1px solid
+        var(--cor-borda);
+
+    border-radius:
+        var(--raio);
+
+    box-shadow:
+        0 4px 0
+        rgba(0, 0, 0, 0.15);
+}
+
+
+.coluna-tarefas h3 {
+    margin-bottom:
+        1rem;
+}
+
+
+/* =========================================================
+   CORES DAS COLUNAS
+========================================================= */
+
+.status-a-fazer {
+    border-top:
+        5px solid
+        var(--cor-a-fazer);
+}
+
+
+.status-andamento {
+    border-top:
+        5px solid
+        var(--cor-andamento);
+}
+
+
+.status-revisao {
+    border-top:
+        5px solid
+        var(--cor-revisao);
+}
+
+
+.status-concluido {
+    border-top:
+        5px solid
+        var(--cor-concluido);
+}
+
+
+/* =========================================================
+   LISTAS
+========================================================= */
+
+ul {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        var(--espaco-medio);
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    list-style:
+        none;
+}
+
+
+/* =========================================================
+   CARTÕES
+========================================================= */
+
+article.cartao-quadro {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        0.5rem;
+
+    min-width:
+        0;
+
+    padding:
+        1rem;
+
+    background-color:
+        white;
+
+    border:
+        1px solid
+        var(--cor-borda);
+
+    border-radius:
+        var(--raio);
+
+    box-shadow:
+        0 2px 4px
+        rgba(0, 0, 0, 0.08);
+}
+
+
+.cartao-quadro h4 {
+    margin:
+        0;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+.cartao-quadro p {
+    margin:
+        0;
+}
+
+
+.cartao-quadro .prazo {
+    margin-top:
+        0.5rem;
+}
+
+
+.cartao-quadro .prioridade {
+    font-weight:
+        bold;
+}
+
+
+.cartao-quadro button {
+    align-self:
+        flex-start;
+
+    margin-top:
+        0.5rem;
+}
+
+
+/* =========================================================
+   COLUNA VAZIA
+========================================================= */
+
+.coluna-vazia {
+    padding:
+        1rem;
+
+    color:
+        #666;
+
+    font-style:
+        italic;
+}
+
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
+footer {
+    margin-top:
+        2rem;
+
+    padding:
+        1.5rem;
+
+    background:
+        linear-gradient(
+            180deg,
+            #303030,
+            #1b1b1b
+        );
+
+    color:
+        white;
+
+    text-align:
+        center;
+
+    border-top:
+        5px solid #111;
+
+    box-shadow:
+        inset 0 1px 0 #555;
+}
+
+
+footer p {
+    margin:
+        0;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 60rem) {
+
+    .quadro-tarefas {
+        grid-template-columns:
+            repeat(
+                4,
+                minmax(0, 1fr)
+            );
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 70rem) {
+
+    .filtros {
+        align-items:
+            stretch;
+    }
+
+    .filtro {
+        flex:
+            1 1 auto;
+    }
+
+    .busca {
+        flex-basis:
+            100%;
+    }
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 45rem) {
+
+    main {
+        padding:
+            0.75rem;
+    }
+
+    .filtros {
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+    }
+
+    .filtro {
+        width:
+            100%;
+    }
 
     fieldset {
-        flex-direction: column;
-        align-items: flex-start;
+        width:
+            100%;
+    }
+
+    .opcoes {
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        align-items:
+            stretch;
+    }
+
+    .opcoes label {
+        width:
+            100%;
+
+        text-align:
+            center;
     }
 
     select,
-    button {
-        width: 100%;
+    #limpar-filtros {
+        width:
+            100%;
     }
 
+    #status {
+        min-height:
+            3rem;
+
+        padding:
+            0.65rem 0.75rem;
+
+        font-size:
+            0.9rem;
+    }
+
+    .esteira {
+        height:
+            8rem;
+    }
+
+    .caixa-tarefa {
+        flex-basis:
+            10rem;
+
+        width:
+            10rem;
+
+        height:
+            5rem;
+
+        font-size:
+            0.9rem;
+    }
+
+    .mesa {
+        min-height:
+            22rem;
+
+        padding:
+            1rem;
+    }
+
+    .tarefa-na-mesa {
+        width:
+            100%;
+
+        transform:
+            rotate(0);
+    }
+}
+
+
+/* =========================================================
+   MOVIMENTO REDUZIDO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #esteira-tarefas {
+        animation:
+            none !important;
+
+        transform:
+            translate3d(
+                0,
+                0,
+                0
+            ) !important;
+    }
+
+    .caixa-tarefa,
+    .opcoes label {
+        transition:
+            none;
+    }
 }
 
